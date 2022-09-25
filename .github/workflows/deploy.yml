@@ -1,0 +1,23 @@
+name: deploy-dashboard
+on: push
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      HAVE_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN != '' }}
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Build the specifications
+        run: |
+          ./gradlew
+
+      - name: Deploy to gh-pages
+        if: ${{ env.HAVE_ACCESS_TOKEN == 'true' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/dist
+          token: ${{ secrets.ACCESS_TOKEN }}
+          branch: gh-pages
+          target-folder: /
