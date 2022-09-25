@@ -1,1 +1,38 @@
-Hello, world
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="nojs">
+<head>
+<meta charset='UTF-8' />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<title>XProc Dashboard</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/saxon-js/SaxonJS2.rt.js"></script>
+<script src="js/start.js"></script>
+</head>
+<body>
+<h1>XProc Dashboard</h1>
+
+<p>This page summarizes the branches and pull requests on the XProc
+<a href="https://github.com/xproc/3.0-specification">specification</a>
+and <a href="https://github.com/xproc/3.0-steps">step</a> repositories.</p>
+
+<div class="warning">
+<p>This page is constructed dynamically with JavaScript; it doesn’t
+work if JavaScript is unavailable.</p>
+</div>
+
+<section class="community" x-name="xproc">
+<section class="repository" x-name="3.0-specification">
+<h2>Specification Repository</h2>
+<div class="pull-requests">Loading pull requests…</div>
+<div class="branches">Loading branches…</div>
+</section>
+
+<section class="repository" x-name="3.0-steps">
+<h2>Step Libraries Repository</h2>
+<div class="pull-requests">Loading pull requests…</div>
+<div class="branches">Loading branches…</div>
+</section>
+</section>
+
+</body>
+</html>
