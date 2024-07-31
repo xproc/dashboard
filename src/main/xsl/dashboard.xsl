@@ -463,7 +463,7 @@
         <xsl:variable name="comm" select="map:get($ignore, $community)"/>
         <xsl:if test="$comm instance of map(*)
                       and map:contains($comm, $repository)">
-          <xsl:sequence select="map:get($comm, $repository)?pulls ! xs:integer(.)"/>
+          <xsl:sequence select="array:flatten(map:get($comm, $repository)?pulls) ! xs:integer(.)"/>
         </xsl:if>
       </xsl:if>
     </xsl:if>
@@ -535,7 +535,6 @@
                         || $community || '/' || $repository || '/compare/'
                         || ../@x-base || '...' || ../@x-head"/>
 
-
   <ixsl:schedule-action
       http-request="map {
                       'method': 'GET',
@@ -566,6 +565,9 @@
         <xsl:variable name="files" select="array:flatten($body?files) ! .?filename"/>
         <xsl:if test="exists($files)">
           <h5>Changed files</h5>
+          <!-- It would be nice to link to the diffs for each file, but CORS
+               prevents us from reading the GitHub page and I have no idea
+               how to predict the fragment identifiers for each file. -->
           <ul class="changed-files">
             <xsl:for-each select="$files">
               <li>{.}</li>

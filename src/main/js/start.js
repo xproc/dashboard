@@ -1,7 +1,7 @@
 window.onload = function() {
   document.querySelector("html").className = "js";
 
-  const webroot = "https://spec.xproc.org/";
+  const webroot = "https://spec.xproc.org";
   SaxonJS.getResource({"location": `${webroot}dashboard.json`,
                        "type": "json"})
     .then(config => {
