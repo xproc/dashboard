@@ -23,4 +23,4 @@ jobs:
           folder: build/dist
           token: ${{ secrets.ACCESS_TOKEN }}
           branch: gh-pages
-          target-folder: /dashboard
+          target-folder: /
